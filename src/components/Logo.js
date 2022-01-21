@@ -21,7 +21,7 @@ const Logos = styled.div`
 `
 
 const Animation = styled.div`
-  animation: ${remove} 0.5s 2s linear 1; 
+  animation: ${remove} 0.2s 2s linear 1; 
   animation-fill-mode: forwards;
   overflow: hidden;
   display: flex;
@@ -33,6 +33,8 @@ const AllOfLogo = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 15px;
+  width: 184px;
+  height: 118px;
 `
 
 
