@@ -1,27 +1,11 @@
 import styled from "styled-components";
 import React from "react";
-import { Link } from "react-router-dom";
-
-const FontSizes = styled.div`
-    font-size: ${(props) => {
-      if (props.md) {
-        return "20";
-      } else if (props.lg) {
-        return "32";
-      } else if (props.sm) {
-        return "16";
-      }
-    }}px
-  }
-`;
-
-const Everything = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 381px;
-  height: 302px;
-  gap: 38px;
-`;
+import Everything_N from "../components/Everything_N";
+import { FontSizes } from "../components/FontSizes";
+import Title from '../components/Title'
+import Email from "../components/Email";
+import EmailName from '../components/EmailName'
+import EmailInput from '../components/EmailInput'
 
 const Text = styled.div`
   width: 100%;
@@ -32,13 +16,6 @@ const Text = styled.div`
   gap: 24px
 `;
 
-const Title = styled.div`
-display: flex;
-justify-content: center;
-font-weight: 700;
-color: #02b589;
-`
-
 const SmallText = styled.div`
 width: 100%;
 height: 50px;
@@ -46,30 +23,6 @@ text-align: center;
 display: flex;
 align-items: center;
 `
-
-const Email = styled.div`
-  width: 100%;
-  height: 70px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const EmailName = styled.div`
-  font-weight: 400;
-  padding-left: 15px;
-`;
-
-const EmailInput = styled.input`
-  width: 100%;
-  height: 44px;
-  border: 1px solid #f0f0f0;
-  border-radius: 100px;
-  text-align: left;
-  padding-left: 10px;
-  box-shadow: 0px 1px 5px 0px #00000029;
-  padding-left: 16px;
-`;
 
 const LoginBtn = styled.button`
   width: 100%;
@@ -83,7 +36,7 @@ const LoginBtn = styled.button`
 
 const Recover = () => {
   return (
-    <Everything>
+    <Everything_N>
       <Text>
         <Title>
           <FontSizes lg>Нууц үг сэргээх</FontSizes>
@@ -104,7 +57,7 @@ const Recover = () => {
       <LoginBtn>
         <FontSizes md>Илгээх</FontSizes>
       </LoginBtn>
-    </Everything>
+    </Everything_N>
   );
 };
 

@@ -1,20 +1,23 @@
 import React from "react";
 import Home from './pages/Home.js'
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Login from "./components/Login";
-import Signup from './components/Signup';
-import ForgotPass from './components/ForgotPass'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from './pages/Signup';
+import ForgotPass from './pages/ForgotPass'
+import { AuthProvider } from "./providers/auth-context.js";
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/forgotPass" element={<ForgotPass />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forgotPass" element={<ForgotPass />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 

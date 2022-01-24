@@ -1,6 +1,14 @@
-export default FontSizes = `
-    'md' : '20px';
-    'sm' : '16px';
-    'xs' : '14px';
-    '2xs': '12px'; 
+import React from "react";
+import styled from "styled-components";
+
+export const FontSizes = styled.div`
+    font-size: ${(props) => {
+        if (props.md) {
+            return "20";
+        } else if (props.lg) {
+            return "32";
+        } else if (props.sm) {
+            return "16";
+        }
+    }}px
 `

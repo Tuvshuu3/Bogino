@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-
-const FontSizes = styled.div`
-    font-size: ${props => props.md ? '20px' : '30px' };
-  }
-`
+import { FontSizes } from "../components/FontSizes";
 
 const Both = styled.div`
     width: 773px;
