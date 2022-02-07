@@ -1,17 +1,23 @@
-import styled from "styled-components";
-import React from "react";
+import React, {useState} from "react";
 import Everything_N from "../components/Everything_N";
 import { FontSizes } from "../components/FontSizes";
 import Title from '../components/Title'
 import Email from '../components/Email'
 import EmailName from '../components/EmailName'
-import EmailInput from '../components/EmailInput'
+import EmailInput1 from '../components/EmailInput'
 import Password from '../components/Password'
 import PasswordName from '../components/PasswordName'
-import PasswordInput from '../components/PasswordInput'
+import PasswordInput1 from '../components/PasswordInput'
 import LoginBtn from '../components/LoginBtn'
+import { AuthContext, AuthProvider, useAuthContext } from '../providers/auth-context.js';
 
 const Burtguuleh = () => {
+
+  const { login, signUp, signOut, user } = useAuthContext()
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <Everything_N>
       <Title>
@@ -21,24 +27,24 @@ const Burtguuleh = () => {
         <EmailName>
           <FontSizes sm>Цахим хаяг </FontSizes>
         </EmailName>
-        <EmailInput placeholder="name@mail.domain"></EmailInput>
-      </Email>
+        <EmailInput1 value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@mail.domain"/>
+      </Email>  
 
       <Password>
         <PasswordName>
           <FontSizes sm>Нууц үг</FontSizes>
         </PasswordName>
-        <PasswordInput placeholder="••••••••••"></PasswordInput>
+        <PasswordInput1 value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••••"/>
       </Password>
 
       <Password>
         <PasswordName>
           <FontSizes sm>Нууц үгээ давтна уу?</FontSizes>
         </PasswordName>
-        <PasswordInput placeholder="••••••••••"></PasswordInput>
+        <PasswordInput1 placeholder="••••••••••"/>
       </Password>
 
-      <LoginBtn>
+      <LoginBtn onClick={() => signUp(email, password)}>
         <FontSizes md>Бүртгүүлэх </FontSizes>
       </LoginBtn>
  

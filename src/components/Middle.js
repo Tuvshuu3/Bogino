@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 
-const Middle1 = styled.div`
+const Middle = styled.div`
   width: 100vw;
   height: 70vh;
   display: flex;
@@ -13,10 +13,5 @@ const Middle1 = styled.div`
 `;
 
 
-const Middle = ({children}) => {
-    return (
-    <Middle1>{children}</Middle1>
-    )
-}
 
 export default Middle;

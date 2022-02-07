@@ -1,19 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Everything_N from "../components/Everything_N";
 import { FontSizes } from "../components/FontSizes";
 import Title from '../components/Title'
 import Email from "../components/Email";
 import EmailName from '../components/EmailName'
-import EmailInput from '../components/EmailInput'
+import EmailInput1 from '../components/EmailInput'
 import Password from '../components/Password'
 import PasswordName from '../components/PasswordName'
-import PasswordInput from '../components/PasswordInput'
+import PasswordInput1 from '../components/PasswordInput'
 import LoginBtn from '../components/LoginBtn'
 import { AuthContext, AuthProvider, useAuthContext } from '../providers/auth-context.js';
 
-const { login, signUp, signOut, user } = useAuthContext()
 
 const Remember = styled.div`
 width:100%;
@@ -29,7 +28,7 @@ display: flex;
 flex-direction: row;
 gap: 8px;
 align-items: center;
-`;
+`; 
 
 const CheckMark = styled.div`
   width: 20px;
@@ -52,19 +51,32 @@ font-weight: 400
 `;
 
 const Nevtreh = () => {
-  return (
+  const { login, signUp, signOut, user } = useAuthContext()
+  const log = useNavigate()
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  if(user.email){
+    log('/')
+  }
+  
+  return ( 
+    
     <Everything_N>
+      
       <Title>
         <FontSizes lg>Нэвтрэх</FontSizes>
       </Title>
       <Email>
         <EmailName><FontSizes sm>Цахим хаяг </FontSizes></EmailName>
-        <EmailInput placeholder='name@mail.domain'></EmailInput>
+        <EmailInput1 value={email} onChange={(e) => setEmail(e.target.value)} placeholder='name@mail.domain'/>
       </Email>
 
       <Password>
         <PasswordName><FontSizes sm>Нууц үг</FontSizes></PasswordName>
-        <PasswordInput placeholder='••••••••••'></PasswordInput>
+        <PasswordInput1 value={password} onChange={(e) => setPassword(e.target.value)} placeholder='••••••••••'/>
       </Password>
 
       <Remember>
@@ -76,8 +88,8 @@ const Nevtreh = () => {
         <Link to='/forgotPass'><ForgotPass>Нууц үгээ мартсан</ForgotPass></Link>
       </Remember>
 
-        <LoginBtn onClick={login}><FontSizes md>НЭВТРЭХ </FontSizes></LoginBtn>
-        <Link to='/signup'><NewAcc>Шинэ хэрэглэгч бол энд дарна уу?</NewAcc></Link>
+        <LoginBtn onClick={() => login(email, password)}><FontSizes md>НЭВТРЭХ </FontSizes></LoginBtn>
+        
     </Everything_N>
   );
 };

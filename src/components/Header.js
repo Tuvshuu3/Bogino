@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 
-const Header1 = styled.div`
+const Header = styled.div`
   height: 156px;
   width: 95%;
   display: flex;
@@ -10,10 +10,6 @@ const Header1 = styled.div`
   justify-content: flex-end;
 `;
 
-const Header = ({children}) => {
-    return (
-    <Header1>{children}</Header1>
-    )
-}
+
 
 export default Header;

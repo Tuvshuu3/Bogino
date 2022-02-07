@@ -4,13 +4,13 @@ import 'firebase/compat/firestore'
 import { useEffect, useState } from 'react';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBMH3JvbKfA-kcDXQSxiG7zR2VA9vO0tt0",
-  authDomain: "boginoo-b6c56.firebaseapp.com",
-  projectId: "boginoo-b6c56",
-  storageBucket: "boginoo-b6c56.appspot.com",
-  messagingSenderId: "963310800134",
-  appId: "1:963310800134:web:7a37e7d85b164bb3166287",
-  measurementId: "G-VZEG03FTBM"
+  apiKey: "AIzaSyC7rkenxKz6N6S8PzWpABHjTOE6b5fVuKI",
+  authDomain: "boginoo-e6f49.firebaseapp.com",
+  projectId: "boginoo-e6f49",
+  storageBucket: "boginoo-e6f49.appspot.com",
+  messagingSenderId: "311127533614",
+  appId: "1:311127533614:web:587b7552edccea151357bf",
+  measurementId: "G-BMWFXXGHNK"
 };
 
 

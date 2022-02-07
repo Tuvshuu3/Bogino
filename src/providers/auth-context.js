@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, createContext } from 'react';
+import { scryRenderedDOMComponentsWithClass } from 'react-dom/cjs/react-dom-test-utils.production.min';
 import { useFirebase } from '../firebase';
 
 
@@ -17,27 +18,31 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         if (auth)
             auth.onAuthStateChanged((user) => {
-
+                scryRenderedDOMComponentsWithClass()
                 if (user) {
                     setUser(user)
+                    console.log(user)
                     var uid = user.uid;
                     // ...
-                } else {
+                } else {    
                     setUser({})
                 }
             });
     }, [auth])
+      
     const login = (email, password) => {
-        auth.signInWithEmailAndPassword('nasaa1@gmail.com', '123456')
+        auth.signInWithEmailAndPassword(email, password)
+        console.log("logged in successfully")
+        
     };  
 
     const signUp = (email, password) => {
-        auth.createUserWithEmailAndPassword('nasaa1@gmail.com', '123456')
-
+        auth.createUserWithEmailAndPassword(email, password)
     }
 
     const signOut = () => {
         auth.signOut()
+        alert("You have logged out!")
     }
     return <AuthContext.Provider value={{ login, signUp, signOut, user }}>
         {children}

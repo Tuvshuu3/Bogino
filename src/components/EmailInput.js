@@ -13,10 +13,4 @@ const EmailInput1 = styled.input`
 `;
 
 
-const EmailInput = ({children}) => {
-    return (
-    <EmailInput1>{children}</EmailInput1>
-    )
-}
-
-export default EmailInput;
+export default EmailInput1;

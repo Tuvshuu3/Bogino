@@ -13,10 +13,4 @@ const PasswordInput1 = styled.input`
 `;
 
 
-const PasswordInput = ({children}) => {
-    return (
-    <PasswordInput1>{children}</PasswordInput1>
-    )
-}
-
-export default PasswordInput;
+export default PasswordInput1;

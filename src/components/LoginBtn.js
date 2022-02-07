@@ -9,12 +9,8 @@ const LoginBtn1 = styled.button`
   color: white;
   border: none;
   font-weight: 700;
+  cursor: pointer;
 `;
 
-const LoginBtn = ({children}) => {
-    return (
-    <LoginBtn1>{children}</LoginBtn1>
-    )
-}
 
-export default LoginBtn;
+export default LoginBtn1;
