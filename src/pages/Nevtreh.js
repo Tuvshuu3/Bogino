@@ -89,6 +89,9 @@ const Nevtreh = () => {
       </Remember>
 
         <LoginBtn onClick={() => login(email, password)}><FontSizes md>НЭВТРЭХ </FontSizes></LoginBtn>
+        <Link to="/signup">
+        <NewAcc>Шинэ хэрэглэгч бол энд дарна уу?</NewAcc>
+      </Link>
         
     </Everything_N>
   );
