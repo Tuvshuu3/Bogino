@@ -21,7 +21,6 @@ export const AuthProvider = ({ children }) => {
                 scryRenderedDOMComponentsWithClass()
                 if (user) {
                     setUser(user)
-                    console.log(user)
                     var uid = user.uid;
                     // ...
                 } else {    

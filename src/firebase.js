@@ -29,3 +29,20 @@ export const useFirebase = () => {
 
   return state;
 }
+
+export const useCollection = (path) => {
+  const [data, setData] = useState([])
+  const { firestore } = useFirebase();
+
+  useEffect(() => {
+    if(firestore && path)
+    firestore.collection(path).onSnapshot((querySnapshot) => {
+      var cities = [];
+      querySnapshot.forEach((doc) => {
+        cities.push({id: doc.id, ...doc.data()});
+      });
+      setData(cities)
+    });
+  }, [path, firestore])
+  return{ data }
+}

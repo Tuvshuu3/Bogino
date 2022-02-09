@@ -30,6 +30,7 @@ const SearchBtn = styled.button`
 `
 
 const Search = () => {
+
     return (
         <Both>
             <SearchBar placeholder='https://www.web-huudas.mn'></SearchBar>

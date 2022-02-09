@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 import Everything from "../components/Everything";
 import { FontSizes } from "../components/FontSizes";
 import Header from "../components/Header";
-import Content from "../components/Content"; 
+import Content from "../components/Content";
 import Instructions from "../components/Instructions";
 import Middle from "../components/Middle";
 import { useAuthContext } from "../providers/auth-context";
 import LogOut from "../components/LogOut";
+import { useCollection, useFirebase } from "../firebase";
 
 const Button = styled.button`
   width: ${(props) => props.w}px;
@@ -24,18 +25,25 @@ const Button = styled.button`
 `;
 
 const Logged = styled.div`
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-color: #000000;
-display: flex;
-flex-direction: row;
-gap: 10px
-`
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  color: #000000;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+`;
 
 const Home = () => {
+  const { user } = useAuthContext();
+  const { data: urls } = useCollection(user && user?.uid)
+  const [data, setData] = useState([]);
 
-  const { user } = useAuthContext(); 
+  useEffect(() => {
+    if (urls) {
+      setData(urls)
+    }
+  }, [urls ]);
 
   return (
     <Everything>
@@ -45,20 +53,29 @@ const Home = () => {
             <Instructions>ХЭРХЭН АЖИЛЛАДАГ ВЭ?</Instructions>
           </FontSizes>
 
-          {user.email ? <Logged>{user.email} <LogOut/></Logged> : 
+          {user.email ? (
+            <Logged>
+              {user.email} <LogOut />
+            </Logged>
+          ) : (
             <Link to="/login">
               <Button w={183}>
                 <FontSizes md>НЭВТРЭХ</FontSizes>
               </Button>
             </Link>
-          }
+          )}
         </Content>
       </Header>
 
       <Middle>
         <Logo />
-        <Search />  
+        <Search />
       </Middle>
+      {data.map((el) => (
+        <div>
+          {`localhost:3000/${el.id}`} == {el.url}
+        </div>
+      ))}
     </Everything>
   );
 };

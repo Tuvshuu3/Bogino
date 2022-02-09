@@ -8,7 +8,6 @@ import { AuthProvider } from "./providers/auth-context.js";
 
 const App = () => {
   return (
-    
     <AuthProvider>
       <Router>
         <Routes>
