@@ -12,6 +12,7 @@ import Middle from "../components/Middle";
 import { useAuthContext } from "../providers/auth-context";
 import LogOut from "../components/LogOut";
 import { useCollection, useFirebase } from "../firebase";
+import ShortUniqueId from "short-unique-id";
 
 const Button = styled.button`
   width: ${(props) => props.w}px;
@@ -36,8 +37,11 @@ const Logged = styled.div`
 
 const Home = () => {
   const { user } = useAuthContext();
-  const { data: urls } = useCollection(user && user?.uid)
+  const { data: urls, createDoc: addUrl } = useCollection(user && 'allurls')
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const Ruid = new ShortUniqueId({ length: 6 });
+
 
   useEffect(() => {
     if (urls) {
@@ -45,6 +49,11 @@ const Home = () => {
     }
   }, [urls ]);
 
+  const send = () => {
+    {user.email ? addUrl(Ruid(), {email: `${user.email}`,url: `${search}`}) : addUrl(Ruid(), {url: `${search}`})}
+  }
+
+  
   return (
     <Everything>
       <Header>
@@ -69,13 +78,13 @@ const Home = () => {
 
       <Middle>
         <Logo />
-        <Search />
+        <Search search={search} setSearch={setSearch} send={send} />
       </Middle>
-      {data.map((el) => (
+      {user.email ? data.map((el) => (el.email == user.email ? 
         <div>
           {`localhost:3000/${el.id}`} == {el.url}
-        </div>
-      ))}
+        </div> : <></>
+      )) : <></>}
     </Everything>
   );
 };

@@ -43,6 +43,12 @@ export const useCollection = (path) => {
       });
       setData(cities)
     });
-  }, [path, firestore])
-  return{ data }
+  }, [path, firestore]) 
+
+  const createDoc = (docId, data) => {
+    firestore.collection(path).doc(docId).set({
+      ...data
+    }).then(() => console.log("successful"))
+  }
+  return { data, createDoc }
 }

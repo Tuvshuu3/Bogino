@@ -29,13 +29,18 @@ const SearchBtn = styled.button`
     font-weight: 700;
 `
 
-const Search = () => {
+const Search = ({send, search, setSearch}) => {
+
+    const changeFunction = (e) => {
+        e.preventDefault()
+        setSearch(e.target.value)
+    }
 
     return (
         <Both>
-            <SearchBar placeholder='https://www.web-huudas.mn'></SearchBar>
+            <SearchBar type='text' value={search} onChange={changeFunction} placeholder='https://www.web-huudas.mn'></SearchBar>
             
-            <SearchBtn>
+            <SearchBtn onClick={send}>
                 <FontSizes md>
                     БОГИНОСГОХ
                 </FontSizes>
