@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from './pages/Signup';
 import ForgotPass from './pages/ForgotPass'
 import { AuthProvider } from "./providers/auth-context.js";
+import Shorturl from "./components/shorturl.js";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgotPass" element={<ForgotPass />} />
+          <Route path=":docId"  element={<Shorturl />} />
         </Routes>
       </Router>
     </AuthProvider>

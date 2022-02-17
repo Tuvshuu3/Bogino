@@ -25,6 +25,8 @@ const Button = styled.button`
   font-weight: 700;
 `;
 
+//darkmode: #212121;
+
 const Logged = styled.div`
   font-size: 20px;
   font-style: normal;
@@ -34,6 +36,53 @@ const Logged = styled.div`
   flex-direction: row;
   gap: 10px;
 `;
+
+const History = styled.div`
+  width: 75%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding-right: 15px;
+`
+
+const Part = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+const Shortened = styled.div`
+font-family: Ubuntu;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+color: #000000;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 30%;
+`
+
+const Original = styled.div`
+font-family: Ubuntu;
+font-style: normal;
+font-weight: 400;
+color: #000000
+`
+
+const Copy = styled.div`
+font-family: Ubuntu;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+color: #02B589;
+text-decoration: underline;
+cursor: pointer;
+`
 
 const Home = () => {
   const { user } = useAuthContext();
@@ -80,11 +129,21 @@ const Home = () => {
         <Logo />
         <Search search={search} setSearch={setSearch} send={send} />
       </Middle>
-      {user.email ? data.map((el) => (el.email == user.email ? 
-        <div>
-          {`localhost:3000/${el.id}`} == {el.url}
-        </div> : <></>
-      )) : <></>}
+
+      <History>
+        {user.email ? data.map((el) => (el.email == user.email ? 
+          <Part>
+            <Shortened>
+              {`localhost:3000/${el.id}`}
+              <Copy onClick={() =>  navigator.clipboard.writeText(`localhost:3000/${el.id}`)}>Copy Link</Copy>
+            </Shortened> 
+            <Original>
+              {el.url}
+            </Original>
+          </Part> : <></>
+        )) : <></>}
+      </History>
+      
     </Everything>
   );
 };

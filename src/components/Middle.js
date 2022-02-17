@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Middle = styled.div`
   width: 100vw;
-  height: 70vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
