@@ -8,10 +8,15 @@ import Header from "../components/Header";
 import Content from "../components/Content";
 import Instructions from "../components/Instructions";
 import Middle from "../components/Middle";
+import { useAuthContext } from "../providers/auth-context";
+
 
 const Login = () => {
+
+  const { dark, setNightMode } = useAuthContext();
+
   return (
-    <Everything>
+    <Everything style={{ backgroundColor: dark ? '#212121' : '#FFFFFF', transition: '2s'}}>
       <Header>
         <Content>
           <FontSizes md>

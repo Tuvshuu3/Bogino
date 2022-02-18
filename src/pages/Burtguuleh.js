@@ -13,7 +13,7 @@ import { AuthContext, AuthProvider, useAuthContext } from '../providers/auth-con
 
 const Burtguuleh = () => {
 
-  const { login, signUp, signOut, user } = useAuthContext()
+  const { login, signUp, signOut, user, dark } = useAuthContext()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,21 +24,21 @@ const Burtguuleh = () => {
         <FontSizes lg>Бүртгүүлэх</FontSizes>
       </Title>
       <Email>
-        <EmailName>
+        <EmailName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>
           <FontSizes sm>Цахим хаяг </FontSizes>
         </EmailName>
         <EmailInput1 value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@mail.domain"/>
       </Email>  
 
       <Password>
-        <PasswordName>
+        <PasswordName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>
           <FontSizes sm>Нууц үг</FontSizes>
         </PasswordName>
         <PasswordInput1 value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••••"/>
       </Password>
 
       <Password>
-        <PasswordName>
+        <PasswordName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>
           <FontSizes sm>Нууц үгээ давтна уу?</FontSizes>
         </PasswordName>
         <PasswordInput1 placeholder="••••••••••"/>

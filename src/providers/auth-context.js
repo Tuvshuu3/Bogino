@@ -14,6 +14,13 @@ export const AuthProvider = ({ children }) => {
     const { auth, firebase } = useFirebase()
     const [user, setUser] = useState({})
 
+    const [dark, setDark] = useState(false)
+
+    const setNightMode = () => {
+    console.log(dark)
+    setDark(!dark)
+    }
+
 
     useEffect(() => {
         if (auth)
@@ -43,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         auth.signOut()
         alert("You have logged out!")
     }
-    return <AuthContext.Provider value={{ login, signUp, signOut, user }}>
+    return <AuthContext.Provider value={{ login, signUp, signOut, dark, setNightMode, user }}>
         {children}
     </AuthContext.Provider>
 }

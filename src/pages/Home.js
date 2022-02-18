@@ -46,73 +46,78 @@ const History = styled.div`
   overflow: scroll;
   overflow-x: hidden;
   padding-right: 15px;
-`
+`;
 
 const Part = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`
+`;
 
 const Shortened = styled.div`
-font-family: Ubuntu;
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-color: #000000;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-width: 30%;
-`
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
+`;
 
 const Original = styled.div`
-font-family: Ubuntu;
-font-style: normal;
-font-weight: 400;
-color: #000000
-`
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+`;
 
 const Copy = styled.div`
-font-family: Ubuntu;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-color: #02B589;
-text-decoration: underline;
-cursor: pointer;
-`
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  color: #02b589;
+  text-decoration: underline;
+  cursor: pointer;
+`;
 
 const Home = () => {
   const { user } = useAuthContext();
-  const { data: urls, createDoc: addUrl } = useCollection(user && 'allurls')
+  const { data: urls, createDoc: addUrl } = useCollection(user && "allurls");
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const Ruid = new ShortUniqueId({ length: 6 });
+  const { dark, setNightMode } = useAuthContext();
 
 
   useEffect(() => {
     if (urls) {
-      setData(urls)
+      setData(urls);
     }
-  }, [urls ]);
+  }, [urls]);
 
   const send = () => {
-    {user.email ? addUrl(Ruid(), {email: `${user.email}`,url: `${search}`}) : addUrl(Ruid(), {url: `${search}`})}
-  }
+    {
+      user.email
+        ? addUrl(Ruid(), { email: `${user.email}`, url: `${search}` })
+        : addUrl(Ruid(), { url: `${search}` });
+    }
+  };
 
-  
   return (
-    <Everything>
+    <Everything style={{ backgroundColor: dark ? '#212121' : '#FFFFFF', transition: '2s'}}>
       <Header>
+
         <Content>
           <FontSizes md>
             <Instructions>ХЭРХЭН АЖИЛЛАДАГ ВЭ?</Instructions>
           </FontSizes>
 
           {user.email ? (
-            <Logged>
+            <Logged style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>
               {user.email} <LogOut />
             </Logged>
           ) : (
@@ -131,19 +136,30 @@ const Home = () => {
       </Middle>
 
       <History>
-        {user.email ? data.map((el) => (el.email == user.email ? 
-          <Part>
-            <Shortened>
-              {`localhost:3000/${el.id}`}
-              <Copy onClick={() =>  navigator.clipboard.writeText(`localhost:3000/${el.id}`)}>Copy Link</Copy>
-            </Shortened> 
-            <Original>
-              {el.url}
-            </Original>
-          </Part> : <></>
-        )) : <></>}
+        {user.email ? (
+          data.map((el) =>
+            el.email == user.email ? (
+              <Part>
+                <Shortened style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>
+                  {`localhost:3000/${el.id}`}
+                  <Copy
+                    onClick={() =>
+                      navigator.clipboard.writeText(`localhost:3000/${el.id}`)
+                    }
+                  >
+                    Copy Link
+                  </Copy>
+                </Shortened>
+                <Original style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>{el.url}</Original>
+              </Part>
+            ) : (
+              <></>
+            )
+          )
+        ) : (
+          <></>
+        )}
       </History>
-      
     </Everything>
   );
 };

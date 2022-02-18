@@ -61,6 +61,8 @@ const Nevtreh = () => {
   if(user.email){
     log('/')
   }
+
+  const { dark, setNightMode } = useAuthContext();
   
   return ( 
     
@@ -70,12 +72,12 @@ const Nevtreh = () => {
         <FontSizes lg>Нэвтрэх</FontSizes>
       </Title>
       <Email>
-        <EmailName><FontSizes sm>Цахим хаяг </FontSizes></EmailName>
+        <EmailName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}><FontSizes sm>Цахим хаяг </FontSizes></EmailName>
         <EmailInput1 value={email} onChange={(e) => setEmail(e.target.value)} placeholder='name@mail.domain'/>
       </Email>
 
       <Password>
-        <PasswordName><FontSizes sm>Нууц үг</FontSizes></PasswordName>
+        <PasswordName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}><FontSizes sm>Нууц үг</FontSizes></PasswordName>
         <PasswordInput1 value={password} onChange={(e) => setPassword(e.target.value)} placeholder='••••••••••'/>
       </Password>
 
