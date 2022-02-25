@@ -16,18 +16,39 @@ const Header1 = styled.div`
 const Toggle = styled.div`
   width: 69px;
   height: 69px;
+  cursor: pointer
+`
 
+const ToggleEng = styled.div`
+  width: 180px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 900;
+`
+const Help = styled.div`
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  align-items: center
 `
 
 const Header = ({children}) => {
 
-  const { dark, setNightMode } = useAuthContext();
+  const { dark, setNightMode, eng, setEngMode } = useAuthContext();
 
   return(
     <Header1>
-      <Toggle onClick={setNightMode}>
-        {dark ? <img style={{height: '100%'}} src={RMoon}/> : <img style={{height: '100%'}} src={RSun}/>}
-      </Toggle>
+      <Help>
+        <Toggle onClick={setNightMode}>
+          {dark ? <img style={{height: '100%'}} src={RMoon}/> : <img style={{height: '100%'}} src={RSun}/>}
+        </Toggle>
+
+        <ToggleEng onClick={setEngMode}>
+          {eng ? 'English' : 'Mongolia'}
+        </ToggleEng>
+      </Help>
+     
 
       {children}
     </Header1>

@@ -13,14 +13,14 @@ import { useAuthContext } from "../providers/auth-context";
 
 const Login = () => {
 
-  const { dark, setNightMode } = useAuthContext();
+  const { dark, setNightMode, eng, setEngMode } = useAuthContext();
 
   return (
     <Everything style={{ backgroundColor: dark ? '#212121' : '#FFFFFF', transition: '2s'}}>
       <Header>
         <Content>
           <FontSizes md>
-            <Instructions>ХЭРХЭН АЖИЛЛАДАГ ВЭ?</Instructions>
+            <Instructions>{eng ? 'How Does It Work?' : 'ХЭРХЭН АЖИЛЛАДАГ ВЭ?'}</Instructions>
           </FontSizes>
         </Content>
       </Header>

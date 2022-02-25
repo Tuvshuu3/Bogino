@@ -15,11 +15,16 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({})
 
     const [dark, setDark] = useState(false)
+    const [eng, setEng] = useState(false)
 
     const setNightMode = () => {
     console.log(dark)
     setDark(!dark)
     }
+
+    const setEngMode = () => {
+        setEng(!eng)
+        }
 
 
     useEffect(() => {
@@ -50,7 +55,7 @@ export const AuthProvider = ({ children }) => {
         auth.signOut()
         alert("You have logged out!")
     }
-    return <AuthContext.Provider value={{ login, signUp, signOut, dark, setNightMode, user }}>
+    return <AuthContext.Provider value={{ login, signUp, signOut, dark, setNightMode, setEngMode, eng, user }}>
         {children}
     </AuthContext.Provider>
 }

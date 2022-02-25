@@ -1,0 +1,15 @@
+[debug] [2022-02-25T01:15:08.953Z] ----------------------------------------------------------------------
+[debug] [2022-02-25T01:15:08.955Z] Command:       /usr/local/bin/firebase /Users/neststudent/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase login
+[debug] [2022-02-25T01:15:08.955Z] CLI Version:   8.9.0
+[debug] [2022-02-25T01:15:08.955Z] Platform:      darwin
+[debug] [2022-02-25T01:15:08.955Z] Node Version:  v12.18.1
+[debug] [2022-02-25T01:15:08.956Z] Time:          Fri Feb 25 2022 09:15:08 GMT+0800 (Ulaanbaatar Standard Time)
+[debug] [2022-02-25T01:15:08.956Z] ----------------------------------------------------------------------
+[debug] [2022-02-25T01:15:08.956Z] 
+[info] i  Firebase optionally collects CLI usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
+ 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=606618222&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...

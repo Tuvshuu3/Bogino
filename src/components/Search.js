@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import React from "react";
 import { FontSizes } from "../components/FontSizes";
+import {useAuthContext} from '../providers/auth-context.js';
+
 
 const Both = styled.div`
     width: 773px;
@@ -36,13 +38,15 @@ const Search = ({send, search, setSearch}) => {
         setSearch(e.target.value)
     }
 
+    const { eng } = useAuthContext()
+
     return (
         <Both>
             <SearchBar type='text' value={search} onChange={changeFunction} placeholder='https://www.web-huudas.mn'></SearchBar>
             
             <SearchBtn onClick={send}>
                 <FontSizes md>
-                    БОГИНОСГОХ
+                    {eng ? 'Shorten' : 'БОГИНОСГОХ'}
                 </FontSizes>
             </SearchBtn>
             

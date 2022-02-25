@@ -12,7 +12,7 @@ import { useAuthContext } from "../providers/auth-context";
 
 const Signup = () => {
 
-  const { dark, setNightMode } = useAuthContext();
+  const { dark, setNightMode, eng } = useAuthContext();
 
 
   return (
@@ -23,7 +23,7 @@ const Signup = () => {
         </div>
         <Content>
           <FontSizes md>
-            <Instructions>ХЭРХЭН АЖИЛЛАДАГ ВЭ?</Instructions>
+            <Instructions>{eng ? 'How Does It Work?' : 'ХЭРХЭН АЖИЛЛАДАГ ВЭ?'}</Instructions>
           </FontSizes>
 
         </Content>

@@ -13,7 +13,7 @@ import { AuthContext, AuthProvider, useAuthContext } from '../providers/auth-con
 
 const Burtguuleh = () => {
 
-  const { login, signUp, signOut, user, dark } = useAuthContext()
+  const { login, signUp, signOut, user, dark, eng } = useAuthContext()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,31 +21,31 @@ const Burtguuleh = () => {
   return (
     <Everything_N>
       <Title>
-        <FontSizes lg>Бүртгүүлэх</FontSizes>
+        <FontSizes lg>{eng ? 'Sign Up' : 'Бүртгүүлэх'}</FontSizes>
       </Title>
       <Email>
         <EmailName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>
-          <FontSizes sm>Цахим хаяг </FontSizes>
+          <FontSizes sm>{eng ? 'Email' : 'Цахим хаяг'} </FontSizes>
         </EmailName>
         <EmailInput1 value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@mail.domain"/>
       </Email>  
 
       <Password>
         <PasswordName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>
-          <FontSizes sm>Нууц үг</FontSizes>
+          <FontSizes sm>{eng ? 'Password' : 'Нууц үг'}</FontSizes>
         </PasswordName>
         <PasswordInput1 value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••••"/>
       </Password>
 
       <Password>
         <PasswordName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>
-          <FontSizes sm>Нууц үгээ давтна уу?</FontSizes>
+          <FontSizes sm>{eng ? 'Repeat Password' : 'Нууц үгээ давтна уу?'}</FontSizes>
         </PasswordName>
         <PasswordInput1 placeholder="••••••••••"/>
       </Password>
 
       <LoginBtn onClick={() => signUp(email, password)}>
-        <FontSizes md>Бүртгүүлэх </FontSizes>
+        <FontSizes md>{eng ? 'Sign Up' : 'Бүртгүүлэх'} </FontSizes>
       </LoginBtn>
  
     </Everything_N>

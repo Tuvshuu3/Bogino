@@ -22,20 +22,20 @@ flex-direction: row;
 justify-content: space-between;
 `;
 
-const RememberMe = styled.div`
-color: #02b589;
-display: flex;
-flex-direction: row;
-gap: 8px;
-align-items: center;
-`; 
+// const RememberMe = styled.div`
+// color: #02b589;
+// display: flex;
+// flex-direction: row;
+// gap: 8px;
+// align-items: center;
+// `; 
 
-const CheckMark = styled.div`
-  width: 20px;
-  height: 20px;
-  border: 1px solid #02b589;
-  border-radius: 4px
-`;
+// const CheckMark = styled.div`
+//   width: 20px;
+//   height: 20px;
+//   border: 1px solid #02b589;
+//   border-radius: 4px
+// `;
 
 const ForgotPass = styled.div`
 text-decoration: underline
@@ -51,7 +51,7 @@ font-weight: 400
 `;
 
 const Nevtreh = () => {
-  const { login, signUp, signOut, user } = useAuthContext()
+  const { login, signUp, signOut, user, dark, eng } = useAuthContext()
   const log = useNavigate()
 
   const [email, setEmail] = useState("");
@@ -61,38 +61,31 @@ const Nevtreh = () => {
   if(user.email){
     log('/')
   }
-
-  const { dark, setNightMode } = useAuthContext();
   
   return ( 
     
     <Everything_N>
       
       <Title>
-        <FontSizes lg>Нэвтрэх</FontSizes>
+        <FontSizes lg>{eng ? 'Login' : 'Нэвтрэх'}</FontSizes>
       </Title>
       <Email>
-        <EmailName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}><FontSizes sm>Цахим хаяг </FontSizes></EmailName>
+        <EmailName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}><FontSizes sm>{eng ? 'Email' : 'Цахим хаяг'}</FontSizes></EmailName>
         <EmailInput1 value={email} onChange={(e) => setEmail(e.target.value)} placeholder='name@mail.domain'/>
       </Email>
 
       <Password>
-        <PasswordName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}><FontSizes sm>Нууц үг</FontSizes></PasswordName>
+        <PasswordName style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}><FontSizes sm>{eng ? 'Password' : 'Нууц үг'}</FontSizes></PasswordName>
         <PasswordInput1 value={password} onChange={(e) => setPassword(e.target.value)} placeholder='••••••••••'/>
       </Password>
 
       <Remember>
-        <RememberMe>
-          <CheckMark></CheckMark>
-          Намайг сана
-        </RememberMe>
-
-        <Link to='/forgotPass'><ForgotPass>Нууц үгээ мартсан</ForgotPass></Link>
+        <Link to='/forgotPass'><ForgotPass>{eng ? 'Forgot Password?' : 'Нууц үгээ мартсан?'}</ForgotPass></Link>
       </Remember>
 
-        <LoginBtn onClick={() => login(email, password)}><FontSizes md>НЭВТРЭХ </FontSizes></LoginBtn>
+        <LoginBtn onClick={() => login(email, password)}><FontSizes md>{eng ? 'Login' : 'НЭВТРЭХ'}</FontSizes></LoginBtn>
         <Link to="/signup">
-        <NewAcc>Шинэ хэрэглэгч бол энд дарна уу?</NewAcc>
+        <NewAcc>{eng ? "if you're new, click here!" : 'Шинэ хэрэглэгч бол энд дарна уу?'}</NewAcc>
       </Link>
         
     </Everything_N>

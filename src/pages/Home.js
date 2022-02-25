@@ -90,7 +90,7 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const Ruid = new ShortUniqueId({ length: 6 });
-  const { dark, setNightMode } = useAuthContext();
+  const { dark, setNightMode, eng, setEngMode } = useAuthContext();
 
 
   useEffect(() => {
@@ -113,7 +113,7 @@ const Home = () => {
 
         <Content>
           <FontSizes md>
-            <Instructions>ХЭРХЭН АЖИЛЛАДАГ ВЭ?</Instructions>
+            <Instructions>{eng ? 'How Does It Work?' : 'ХЭРХЭН АЖИЛЛАДАГ ВЭ?'}</Instructions>
           </FontSizes>
 
           {user.email ? (
@@ -123,7 +123,7 @@ const Home = () => {
           ) : (
             <Link to="/login">
               <Button w={183}>
-                <FontSizes md>НЭВТРЭХ</FontSizes>
+                <FontSizes md>{eng ? 'Login' : 'НЭВТРЭХ'}</FontSizes>
               </Button>
             </Link>
           )}
@@ -147,7 +147,7 @@ const Home = () => {
                       navigator.clipboard.writeText(`localhost:3000/${el.id}`)
                     }
                   >
-                    Copy Link
+                    {eng ? 'Copy Link' : 'Линк Хуулах'}
                   </Copy>
                 </Shortened>
                 <Original style={{color: dark ? '#FFFFFF' : 'Black', transition: '2s'}}>{el.url}</Original>
